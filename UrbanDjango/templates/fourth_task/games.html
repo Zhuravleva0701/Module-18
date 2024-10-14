@@ -1,0 +1,24 @@
+{% extends 'fourth_task/base.html' %}
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Игры{% endblock %}</title>
+</head>
+<body>
+{% block pagename %}
+    <h1>Игры</h1>
+{% endblock %}
+
+{% block menu %}
+    {{ block.super }}
+{% endblock %}
+
+{% block content %}
+    {% for i in list %}
+       <p>{{ i }}<button>Корзина</button></p>
+    {% endfor %}
+    <br/>
+    <a href="http://127.0.0.1:8000/platform/"><button>Вернуться обратно</button></a>
+{% endblock %}
+</body>
+</html>
