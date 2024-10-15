@@ -14,8 +14,8 @@
 {% endblock %}
 
 {% block content %}
-    {% for i in list %}
-       <p>{{ i }}<button>Корзина</button></p>
+    {% for game in games %}
+       <p>{{ game }}<button>Корзина</button></p>
     {% endfor %}
     <br/>
     <a href="http://127.0.0.1:8000/platform/"><button>Вернуться обратно</button></a>

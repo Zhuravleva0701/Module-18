@@ -6,11 +6,10 @@ def game_platform(request):
 
 
 def games(request):
-    list = ['Atomic Heart', 'Cyberpunk 2077', 'PayDay']
-    context = {
-        'games': list
+    variables = {
+        'games': ['Atomic Heart', 'Cyberpunk 2077', 'PayDay']
     }
-    return render(request, 'fourth_task/games.html', context)
+    return render(request, 'fourth_task/games.html', context=variables)
 
 
 def cart(request):
