@@ -18,13 +18,16 @@ def sign_up_by_djando(request):
 
             if password != repeat_password:
                 info['error'] = 'Пароли не совпадают'
-            elif age < 18:
+            elif int(age) < 18:
                 info['error'] = 'Вы должны быть старше 18'
             elif username in users:
                 info['error'] = 'Пользователь уже существует'
             else:
                 info['message'] = f'Приветствуем, {username}!'
                 users.append(username)
+        else:
+            info['error'] = 'Данные не корректны '
+
     else:
         form = UserRegister()
     info['form'] = form
@@ -34,15 +37,15 @@ def sign_up_by_djando(request):
 def sign_up_by_html(request):
     info = {}
     if request.method == 'POST':
-        username = request.POST.get['username']
-        password = request.POST.get['password']
-        repeat_password = request.POST.get['repeat_password']
-        age = request.POST.get['age']
+        username = request.POST.get('username', '').strip()
+        password = request.POST.get('password', '')
+        repeat_password = request.POST.get('repeat_password', '')
+        age = request.POST.get('age', '').strip()
 
         if password != repeat_password:
             info['error'] = 'Пароли не совпадают'
-        elif age < 18:
-                info['error'] = 'Вы должны быть старше 18'
+        elif int(age) < 18:
+            info['error'] = 'Вы должны быть старше 18'
         elif username in users:
             info['error'] = 'Пользователь уже существует'
         else:
